@@ -1,0 +1,57 @@
+int checkBstOrk1k2(nodoAbr *T,int x, int y, FunSet *callback){ // esercizio esame Lasd Ottobre 2018
+	Stack *st = NULL;
+	Stack *sti = NULL;
+	Stack *stj = NULL;
+	nodoAbr * curr = T;
+	nodoAbr * last = NULL;
+	void * tempI = malloc(sizeof(int));
+	void * tempJ = malloc(sizeof(int));
+
+	int i = x;
+	int j = y;
+	*((int*)tempI) = i;
+	*((int*)tempJ) = j;
+
+
+	int a = 1;
+	while(st || curr){
+		if(curr){
+			void *val = curr->info;
+			st = Push(st,curr);
+			sti = Push(sti,tempI);
+			stj = Push(stj,tempJ);
+			if(callback->cmp(curr->info,tempI)> 0 && callback->cmp(curr->info,tempJ)<0){
+				curr = curr->sx;
+				j = val - 1;
+				tempJ = malloc(sizeof(int));
+				*((int*)tempJ) = j;
+
+			}else{
+				a = 0;
+				last = curr; // mi fermo e non scorro più l'albero
+				curr = NULL;
+			}
+
+		}else{
+			curr = Top(st);
+			i = *((int*)Top(sti));
+			j = *((int*)Top(stj));
+			if(curr->sx == last && curr->dx && a!=0){
+				curr = curr->dx;
+				i = *((int*)curr->info) + 1;
+				tempI = malloc(sizeof(int));
+				*((int*)tempI) = i;
+				last = NULL;
+			}else{
+				//ret = a;
+				st = Pop(st);
+				sti = Pop(sti);
+				stj = Pop(stj);
+				last = curr;
+				curr = NULL;
+			}
+		}
+	}
+
+	return a;
+}
