@@ -1,0 +1,48 @@
+Algo(A,i,j)
+x=A[i] y=A[j]
+ret=0
+StJ=StQ=StRet=Lj=Null
+cJ=j
+while(i<=cJ Or StJ!=Null) Do
+	if(i<=cJ)then
+		ret=0
+		x=A[i]
+		y=A[cJ]
+		q=i+cJ/2
+		if(i<q)then
+		  StQ=Push(StQ,q)
+		  StRet=Push(StRet,ret)
+		  StJ=Push(StJ,cJ)
+		  cJ=q
+		else  if(q+1<cJ)then
+			 StJ=Push(StJ,cJ)
+			 StRet=Push(StRet,ret)
+			 i=q+1
+		else
+			Lj=cJ
+			cJ=i-1
+	 else
+		cJ=ToP(StJ)
+		ret=ToP(StRet)
+		if(cJ!=Lj)then
+			q=ToP(StQ)
+			x=tmp
+			PoP(StQ)
+			ret=ret+x
+			PoP(StRet)
+			if(q+1<j) then
+			   StRet=Push(StRet,ret)
+			   i=q+1
+			else
+			    PoP(StJ)
+			    Lj=cJ
+			    cJ=i-1
+		else
+			y=tmp
+			ret=ret+y
+			PoP(StJ)
+			PoP(StRet)
+			Lj=cJ
+			cJ=i-1
+			
+			

@@ -1,0 +1,36 @@
+Algo(T)
+ret=1
+StT=StX=StA=Null
+Lt=Null cT=T
+while(cT!=Null Or StT!=Null) Then
+	if(cT!=NULL)Then
+		ret=1
+		x=cT->key%2
+		StT=Push(StT,cT)
+		StX=Push(StX,X)
+		cT=cT->dx
+	else
+		cT=ToP(StT)
+		x=ToP(StX)
+		if(cT->sx!=Null AND Lt!=cT->sx)Then
+			a=tmp
+			x=a+x
+			StA=Push(StA,a)
+			cT=cT->sx
+			PoP(StX)
+			StX=Push(StX,x)
+		else
+		     if (cT->sx!=Null)
+			a=ToP(StA)
+			y=tmp
+			PoP(StA)
+		     else
+			a=tmp
+			x=a+x
+			y=Null
+		     ret=x*b*cT->key
+		     PoP(StT)
+		     PoP(StX)
+		     Lt=cT
+	             cT=Null
+return ret

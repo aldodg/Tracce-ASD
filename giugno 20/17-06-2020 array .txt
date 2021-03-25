@@ -1,0 +1,38 @@
+Algo(A,p,r,k)
+ret=0
+StQ=StRet=StP=Lp=Null
+cP=p
+while(cp<=r Or StP!=Null) Do
+	if(cp<=r)then
+	   ret=0
+	   q=cp+r/2
+	   if(k==A[q])then
+	      ret=A[q]
+	   StQ=Push(StQ,q)
+	   StP=Push(StP,cP)
+	   StRet=Push(StRet,ret)
+	   cP=q+1
+	else
+	    cP=ToP(StP)
+	    ret=ToP(StRet)
+	    if(cP!=Lp)then
+		ret=tmp+ret
+		PoP(StRet)
+		if(ret>0)then
+		  q=ToP(StQ)
+		  Push(StRet,ret)
+		  r=q-1
+		  PoP(StQ)
+		else
+		     PoP(StP)
+		     PoP(StQ)
+		     Lp=cP
+	             cP=r+1
+	    else
+		ret=ret+tmp
+		PoP(StP)
+                PoP(StRet)
+		Lp=cP
+	        cP=r+1
+return ret
+	    	     

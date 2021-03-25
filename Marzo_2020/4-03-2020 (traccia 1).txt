@@ -1,0 +1,65 @@
+ALGO(t,h,k)
+ret=0
+StT=StRet=StH=StX=Lt=Null
+cT=T
+while(cT!=Null Or StT!=Null) do
+	if(cT!=Null) then
+	    ret=0
+	    if(h>0)then
+		if(cT->key<k)then
+	             StT=Push(StT,cT)
+		     cT=cT->dx
+		     h=h-2
+	        else
+		    if(cT->key%2=0)then
+			ret=1
+		    StRet=Push(StRet,ret)
+		    StT=Push(StT,cT)
+		    StH=Push(StH,h)
+		    cT=cT->sx
+		    h=h/2
+	   else
+		Lt=cT
+		cT=Null
+	else
+	    cT=ToP(StT)
+	    	if(cT->key<k)the
+		   ret=tmp
+		   Lt=cT
+		   cT=Null
+		   PoP(StT)
+		else
+		    if(cT->dx!=Null AnD Lt!=cT->dx) then
+			ret=ToP(StRet,ret)
+			h=ToP(StH,h)
+			x=ret+tmp
+			StX=Push(StX,x)
+			cT=cT->dx
+			h=h-1
+			PoP(StH)
+			PoP(StRet)
+		    else
+			if(cT->dx!=Null)
+				x=ToP(StX,x)
+				ret=x+tmp
+				Lt=cT
+		   		cT=Null
+				PoP(StX)
+				PoP(StT)
+			else
+			     ret=ToP(StRet)
+			     x=ret+tmp
+			     ret=x+0
+			     Lt=cT
+		   	     cT=Null
+			     PoP(StT)
+			     PoP(StRet)
+return ret
+				
+			
+			 
+		
+
+				    
+				
+									
